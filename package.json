@@ -1,0 +1,33 @@
+{
+  "name": "gamehub",
+  "version": "1.0.0",
+  "description": "Videogame blog website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SnakeZ115/GameHub.git"
+  },
+  "keywords": [
+    "HTML",
+    "SCSS",
+    "JS",
+    "GULP",
+    "NPM",
+    "PHP"
+  ],
+  "author": "José Antonio @SnakeZ115",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SnakeZ115/GameHub/issues"
+  },
+  "homepage": "https://github.com/SnakeZ115/GameHub#readme",
+  "devDependencies": {
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.92.0"
+  }
+}

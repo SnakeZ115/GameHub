@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital@0;1&display=swap');
+
+// Fonts 
+$title_font: "Bebas Neue", sans-serif;
+$text_font: "Roboto", sans-serif;
+
+//Colors
+$background-color: #121212;
+$primary_color: #1a1a1a;
+$white: #FFFFFF;
+$black: #000000;
+$text-primary: #e0e0e0;
+$orange: #ff8c00;
+
+
+// Mixins (Media queries)
+$phone: 480px;
+$tablet: 768px;
+$desktop: 1200px;
+$desktopXL: 1400px;
