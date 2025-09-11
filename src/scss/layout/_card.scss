@@ -1,0 +1,62 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.game {
+    width: 30rem;
+    margin: 0 auto;
+    background-color: v.$primary_color;
+    @include m.tablet {
+        width: 40rem;
+    }
+}
+
+.game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    h3 {
+        color: v.$white;
+        margin: 2rem 0;
+    }
+}
+
+
+.rating {
+    margin-bottom: 2rem;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .number {
+        position: absolute;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: v.$white;
+    }
+
+    .circle {
+        .bg {
+            fill: none;
+            stroke: v.$background-color;
+            stroke-width: 10;
+        }
+
+        .progress {
+            fill: none;
+            stroke: v.$green; 
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 283; 
+            stroke-dashoffset: 283; 
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+    }
+}
+
