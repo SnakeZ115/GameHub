@@ -23,3 +23,9 @@
         @content; 
     }
 }
+
+@mixin navbar-menu {
+    @media (max-width: 880px) {
+        @content
+    }
+}

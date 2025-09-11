@@ -1,0 +1,26 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.enter-blog {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 1rem;
+    a {
+        color: v.$white;
+        cursor: pointer;
+    }
+}
+
+.blog-text span {
+    color: v.$orange;
+}
+
+.blog-text h3::after {
+    content: "";
+    display: block;
+    width: 15rem;
+    height: .5rem;
+    background-color: v.$orange;
+    margin-top: 1rem;
+}

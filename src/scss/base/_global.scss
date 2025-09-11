@@ -15,12 +15,17 @@ html {
 body {
     font-weight: 400;
     font-style: normal;
+    background-color: v.$background-color;
 }
 
 .container {
     width: 95%;
     max-width: 120rem;
     margin: 0 auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }
 
 img,
@@ -47,12 +52,18 @@ h2,
 h3,
 h4 {
     font-family: v.$title_font;
+    color: v.$white;
 }
 
 p {
     font-size: 2rem;
+    font-family: v.$text_font;
 }
 
 a {
     text-decoration: none;
+}
+
+li {
+    list-style: none;
 }

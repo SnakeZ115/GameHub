@@ -21,10 +21,14 @@ export function css( done ) {
     done()
 }
 
+export function imgs() {
+    return src('src/imgs/**/*', { encoding: false })
+        .pipe(dest('dist/imgs'));
+}
 
 export function dev() {
     watch('src/scss/**/*.scss', css) // habilitar modo watch para reflejar cambios inmediatamente. el ** indica que busque todos los archivos con extencion .scss
     watch('src/js/**/*.js', js) // lo mismo para javascript
 }
 
-export default series( js, css, dev )
+export default series( js, css, imgs, dev )
