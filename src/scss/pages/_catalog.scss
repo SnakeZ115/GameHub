@@ -1,0 +1,44 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+fieldset {
+  border: none;
+  background: #1a1a1a;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: v.$text_font;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row;
+  gap: 0.5rem;
+}
+
+legend {
+  color: v.$orange;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+label {
+  font-size: 1.5rem;
+  color: v.$white;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  @include m.tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+  }
+  @include m.desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
