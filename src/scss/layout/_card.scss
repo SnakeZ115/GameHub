@@ -6,7 +6,7 @@
     margin: 0 auto;
     background-color: v.$primary_color;
     @include m.tablet {
-        width: 40rem;
+        width: 35rem;
     }
 }
 
@@ -20,11 +20,35 @@
         color: v.$white;
         margin: 2rem 0;
     }
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        .tag {
+            background-color: transparent;
+            border: 1px solid v.$white;
+            color: v.$white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            font-family: v.$text_font;
+            text-transform: uppercase;
+        }
+    }
+    .platforms {
+        display: flex;
+        gap: 2rem;
+        color: v.$white;
+        margin-bottom: 2rem;
+        .platform {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    }
 }
 
 
 .rating {
-    margin-bottom: 2rem;
+    margin: 2rem 0;
     position: relative;
     width: 100px;
     height: 100px;
