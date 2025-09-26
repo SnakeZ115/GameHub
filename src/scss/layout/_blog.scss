@@ -12,8 +12,12 @@
     }
 }
 
-.blog-text span {
+.blog-meta span {
     color: v.$orange;
+}
+
+.blog-text {
+    text-align: justify;
 }
 
 .blog-text h3::after {
