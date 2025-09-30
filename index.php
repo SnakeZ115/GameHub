@@ -10,37 +10,11 @@
 </head>
 
 <body class="home">
-    <header class="header">
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="index.html" class="navbar-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-device-gamepad-2">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4z" />
-                        <path d="M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232" />
-                        <path d="M8 9v2" />
-                        <path d="M7 10h2" />
-                        <path d="M14 10h2" />
-                    </svg>
-                    <span>GameHub</span>
-                </a>
-                <button type="button" class="navbar-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <ul class="navbar-menu">
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+
+    <?php 
+        require 'includes/funciones.php';
+        incluirTemplate('header');
+    ?>
 
     <section class="hero container">
         <div class="hero-content">
@@ -89,7 +63,7 @@
                                         <i class="bi bi-pc-display"></i>
                                     </div>
                                 </div>
-                                <a href="entrada-juego.html" class="button">Ver recomendación</a>
+                                <a href="entrada-juego.php" class="button">Ver recomendación</a>
                             </div>
                         </div>
                         <div class="game swiper-slide">
@@ -173,6 +147,7 @@
             </div>
         </section>
     </main>
+    
     <section class="blogs container">
         <h2>últimos Blogs</h2>
         <div class="container blogs-content">
@@ -184,7 +159,7 @@
                         <img src="dist/imgs/OST.jpeg" alt="blog image" loading="lazy">
                     </picture>
                 </div>
-                <a href="entrada-blog.html">
+                <a href="entrada-blog.php">
                     <div class="blog-text">
                         <h3>Top personal de bandas sonoras de videojuegos</h3>
                         <div class="blog-meta">
@@ -204,7 +179,7 @@
                         <img src="dist/imgs/OST.jpeg" alt="blog image" loading="lazy">
                     </picture>
                 </div>
-                <a href="entrada-blog.html">
+                <a href="entrada-blog.php">
                     <div class="blog-text">
                         <h3>Top personal de bandas sonoras de videojuegos</h3>
                         <div class="blog-meta">
@@ -224,7 +199,7 @@
                         <img src="dist/imgs/OST.jpeg" alt="blog image" loading="lazy">
                     </picture>
                 </div>
-                <a href="entrada-blog.html">
+                <a href="entrada-blog.php">
                     <div class="blog-text">
                         <h3>Top personal de bandas sonoras de videojuegos</h3>
                         <div class="blog-meta">
@@ -238,26 +213,9 @@
             </article>
         </div>
     </section>
-    <footer class="footer">
-        <div class="container footer-content">
-            <a href="#" class="navbar-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-device-gamepad-2">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                        d="M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4z" />
-                    <path d="M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232" />
-                    <path d="M8 9v2" />
-                    <path d="M7 10h2" />
-                    <path d="M14 10h2" />
-                </svg>
-                <span>GameHub</span>
-            </a>
-            <p>Todos los derechos reservados ©. 2025</p>
-        </div>
-    </footer>
-    <script type="module" src="/dist/js/app.js"></script>
+
+    <?php incluirTemplate('footer'); ?>
+
     <script type="module" src="/dist/js/swiper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
