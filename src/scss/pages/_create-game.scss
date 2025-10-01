@@ -1,6 +1,20 @@
+@use 'base/variables' as v;
+
 .create-game {
     height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.alerta {
+    padding: .5rem;
+    text-align: center;
+    color: v.$white;
+    font-family: v.$text_font;
+    margin: 1rem 0;
+    font-size: 1.6rem;
+    &.error {
+        background-color: v.$orange;
+    }
 }
