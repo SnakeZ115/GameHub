@@ -1,3 +1,4 @@
 node_modules
 dist
 includes/config/
+info.php

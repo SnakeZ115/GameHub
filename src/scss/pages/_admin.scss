@@ -1,0 +1,48 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.alerta {
+    padding: .5rem;
+    text-align: center;
+    color: v.$white;
+    font-family: v.$text_font;
+    margin: 1rem 0;
+    font-size: 1.6rem;
+
+    &.error {
+        background-color: v.$orange;
+    }
+
+    &.exito {
+        background-color: v.$green;
+    }
+}
+
+table.recomendaciones {
+    width: 100%;
+    margin-top: 4rem;
+    border-spacing: 0;
+    text-align: center;
+    color: v.$white;
+
+    thead {
+        background-color: v.$orange;
+        font-family: v.$text_font;
+        font-size: 1.5rem;
+
+        th {
+            padding: 2rem;
+        }
+    }
+
+    .imagen-tabla {
+        width: 10rem;
+        margin: 0 auto;
+    } 
+    .acciones {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+}

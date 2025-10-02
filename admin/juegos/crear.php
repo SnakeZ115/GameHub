@@ -37,20 +37,23 @@
 
     // Ejecutar el código después de que el usuario envía el formulario
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
         // echo "<pre>";
         // var_dump($_POST); // superglobal que contiene toda la información que el usuario envía
         // echo "</pre>";
 
-        $titulo = $_POST['title'];
-        $calificacion = $_POST['rating'];
+        // echo "<pre>";
+        // var_dump($_FILES); // $_FILES para leer archivos
+        // echo "</pre>";
+
+        $titulo = mysqli_real_escape_string($db, $_POST['title']); // En caso de que alguien inyecte SQL, lo desabilita y lo guarda de forma que no es ejecutable
+        $calificacion = mysqli_real_escape_string($db, $_POST['rating']);
         $generos = $_POST['genres'] ?? [];
         $plataformas = $_POST['platforms'] ?? [];
-        // $imagen = $_POST['imagen'];
-        $recomendacion = $_POST['recomendacion'];
+        $recomendacion = mysqli_real_escape_string($db, $_POST['recomendacion']);
 
-        // echo "<pre>";
-        // var_dump($generos);
-        // echo "</pre>"; 
+        // Asignar FILES a una variable
+        $imagen = $_FILES['imagen'];
 
         // Validacion de formulario, checar si los valores están vacios
         if(!$titulo) {
@@ -69,9 +72,16 @@
             $errores[] = "Debes seleccionar al menos 1 plataforma";
         }
 
-        // if(!$imagen) {
-        //     $errores[] = "Debes insertar una imagen";
-        // }
+        if(!$imagen['name'] || $imagen['error']) {
+             $errores[] = "Debes insertar una imagen";
+        }
+
+        // Validar tamaño de la imagen
+        $medida = 1000 * 1000; // bytes a kilobytes
+
+        if($imagen['size'] > $medida) {
+            $errores[] = " La imagen es muy pesada";
+        }
 
         if(!$recomendacion) {
             $errores[] = "Debes escribir el texto de la recomendacion";
@@ -80,13 +90,28 @@
         // Revisar que el arreglo de errores esté vacío para poder ejecutar el codigo SQL
         if(empty($errores)) {
 
-            $query = "INSERT INTO recomendaciones VALUES (DEFAULT, '$titulo', $calificacion, '$recomendacion', 'prueba', current_date(), 1)";
+            // Subida de archivos
+
+            // 1. Crear carpeta
+            $carpetaImagenes = '../../imagenes/';
+
+            if(!is_dir($carpetaImagenes)) { // si no existe la carpeta de imagenes
+                mkdir($carpetaImagenes);
+            }
+
+            // 2. Generar un nombre unico a la imagen
+            $nombreImagen = md5( uniqid( rand(), true ) ) . ".jpg"; // Generar un hash
+
+            // 3. Subir la imagen a la carpeta
+            move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . $nombreImagen);
+
+            $query = "INSERT INTO recomendaciones VALUES (DEFAULT, '$titulo', $calificacion, '$recomendacion', '$nombreImagen', current_date(), 1)";
 
             $resultado = mysqli_query($db, $query);
 
             if ($resultado) {
 
-                // Asociar generos a la recomendacion, una vez creada la recomendacion
+                // Asociar generos y plataformas a la recomendacion, una vez creada la recomendacion
                 $ultimo_id_recomendacion = mysqli_insert_id($db);
 
                 foreach ($generos as $key => $id) {
@@ -101,7 +126,8 @@
                     $resultado_plataformas = mysqli_query($db, $insertar_plataformas);
                 }
 
-                echo "<script>alert('Recomendación creada correctamente');</script>";
+                // Redireccionar al usuario. Solo funciona si no hay nada de código HTML antes
+                header("Location: /admin?resultado=1");
             }      
 
         }
@@ -121,14 +147,14 @@
             
         <?php endforeach ?>
 
-        <form action="/admin/juegos/crear.php" method="POST" class="form">
+        <form action="/admin/juegos/crear.php" method="POST" class="form" enctype="multipart/form-data">
             <div class="form-field">
                 <label for="title">Título del Juego</label>
-                <input type="text" id="title" name="title" placeholder="Título del juego" value="<?php echo $titulo ?>">
+                <input type="text" id="title" name="title" placeholder="Título del juego" value="<?php echo $titulo ?>" required>
             </div>
             <div class="form-field">
                 <label for="rating">Calificación</label>
-                <input type="number" id="rating" name="rating" min="1" max="100" placeholder="Calificación del juego (1-100)" value="<?php echo $calificacion ?>">
+                <input type="number" id="rating" name="rating" min="1" max="100" placeholder="Calificación del juego (1-100)" value="<?php echo $calificacion ?>" required>
             </div>
             <div class="form-field">
                 <label for="genre">Género</label>
@@ -156,11 +182,11 @@
             </div>
             <div class="form-field">
                 <label for="imagen">Imagen del juego</label>
-                <input type="file" id="imagen" name="imagen">
+                <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required>
             </div>
             <div class="form-field">
                 <label for="recomendacion">Texto de recomendación</label>
-                <textarea id="recomendacion" name="recomendacion" placeholder="Escribe tu recomendación aquí..."><?php echo $recomendacion ?></textarea>
+                <textarea id="recomendacion" name="recomendacion" placeholder="Escribe tu recomendación aquí..." required><?php echo $recomendacion ?></textarea>
             </div>
             <button type="submit" class="button">Crear Recomendación</button>
         </form>
