@@ -116,13 +116,13 @@
 
                 foreach ($generos as $key => $id) {
 
-                    $insertar_generos = "INSERT INTO generos_recomendaciones VALUES ('$ultimo_id_recomendacion', '$id')";
+                    $insertar_generos = "INSERT INTO generos_recomendaciones VALUES ($ultimo_id_recomendacion, $id)";
                     $resultado_generos = mysqli_query($db, $insertar_generos);
                 }
 
                 foreach ($plataformas as $key => $id) {
                     
-                    $insertar_plataformas = "INSERT INTO plataformas_recomendaciones VALUES ('$ultimo_id_recomendacion', '$id')";
+                    $insertar_plataformas = "INSERT INTO plataformas_recomendaciones VALUES ($ultimo_id_recomendacion, $id)";
                     $resultado_plataformas = mysqli_query($db, $insertar_plataformas);
                 }
 

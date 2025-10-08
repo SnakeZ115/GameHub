@@ -30,6 +30,8 @@
         <h1>Administrador de GameHub</h1>
         <?php if( intval($resultado) === 1) : ?>
             <p class="alerta exito">Recomendación creada correctamente</p>
+        <?php elseif( intval($resultado) === 2 ) : ?>
+            <p class="alerta exito">Recomendación modificada correctamente</p>
         <?php endif ?>
         <a href="/admin/juegos/crear.php" class="button">Crear Recomendacion</a>
 
@@ -51,7 +53,7 @@
                         <td> <?php echo $recomendacion['rating']; ?>  </td>
                         <td><img src="/imagenes/<?php echo $recomendacion['imagen'] ?>" alt="imagen juego" class="imagen-tabla"></td>
                         <td class="acciones">
-                            <a href="#" class="button">Modificar</a>
+                            <a href="admin/juegos/actualizar.php?id=<?php echo $recomendacion['idrecomendacion'] ?>" class="button">Modificar</a>
                             <a href="#" class="button">Eliminar</a>
                         </td>
                     </tr>
