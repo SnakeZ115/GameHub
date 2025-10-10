@@ -19,6 +19,38 @@
         require '../includes/config/database.php';
         $db = conectarDB();
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+
+            if ($id) {
+
+                // Eliminar la imagen asociada
+                $extraer_img = "SELECT imagen FROM recomendaciones WHERE idrecomendacion = $id";
+                $res = mysqli_query($db, $extraer_img); 
+                $img = mysqli_fetch_assoc($res);
+
+                unlink('../imagenes/' . $img['imagen']);
+
+                // Eliminar generos asociados
+                $eliminar_generos = "DELETE FROM generos_recomendaciones WHERE recomendaciones_idrecomendacion = $id";
+                $resultado_eliminar_generos = mysqli_query($db, $eliminar_generos);
+
+                // Eliminar plataformas asociadas
+                $eliminar_plataformas = "DELETE FROM plataformas_recomendaciones WHERE recomendaciones_idrecomendacion = $id";
+                $resultado_eliminar_plataformas = mysqli_query($db, $eliminar_plataformas);
+
+                // Eliminar recomendacion
+                $eliminar_recomendacion = "DELETE FROM recomendaciones WHERE idrecomendacion = $id";
+                $resultado_eliminar_recomendacion = mysqli_query($db, $eliminar_recomendacion);
+
+                if($resultado_eliminar_recomendacion && $resultado_eliminar_generos && $resultado_eliminar_plataformas) {
+                    header('location: /admin?resultado=3');
+                }
+            }
+        }
+
+
         // Escribir query
         $query = "SELECT idrecomendacion, titulo_juego, rating, imagen FROM recomendaciones";
 
@@ -32,6 +64,8 @@
             <p class="alerta exito">Recomendación creada correctamente</p>
         <?php elseif( intval($resultado) === 2 ) : ?>
             <p class="alerta exito">Recomendación modificada correctamente</p>
+                <?php elseif( intval($resultado) === 3 ) : ?>
+            <p class="alerta exito">Recomendación eliminada correctamente</p>
         <?php endif ?>
         <a href="/admin/juegos/crear.php" class="button">Crear Recomendacion</a>
 
@@ -54,7 +88,10 @@
                         <td><img src="/imagenes/<?php echo $recomendacion['imagen'] ?>" alt="imagen juego" class="imagen-tabla"></td>
                         <td class="acciones">
                             <a href="admin/juegos/actualizar.php?id=<?php echo $recomendacion['idrecomendacion'] ?>" class="button">Modificar</a>
-                            <a href="#" class="button">Eliminar</a>
+                            <form method="POST" style="width: 100%;">
+                                <input type="hidden" name="id" value="<?php echo $recomendacion['idrecomendacion'] ?>">
+                                <input type="submit" class="button" value="Eliminar">
+                            </form>
                         </td>
                     </tr>
                 <?php endwhile ?>
