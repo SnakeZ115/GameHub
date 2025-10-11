@@ -22,6 +22,8 @@
     }
     .tags {
         display: flex;
+        margin: 0 2rem;
+        flex-wrap: wrap;
         gap: 0.5rem;
         .tag {
             background-color: transparent;

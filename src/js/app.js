@@ -21,5 +21,3 @@ function setRating(percent) {
 
     number.textContent = percent;
 }
-
-setRating(97);

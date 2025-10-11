@@ -30,114 +30,12 @@
             <div class="swiper">
                 <div class="slider-wrapper">
                     <div class="last-games-content swiper-wrapper">
-                        <div class="game swiper-slide">
-                            <picture>
-                                <source srcset="dist/imgs/p5r.jpeg" type="image/jpeg">
-                                <img src="dist/imgs/p5r.jpeg" alt="game image" loading="lazy">
-                            </picture>
-                            <div class="game-content">
-                                <h3>Persona 5 Royal</h3>
-                                <div class="tags">
-                                    <span class="tag">JRPG</span>
-                                    <span class="tag">Turn-Based</span>
-                                    <span class="tag">Anime</span>
-                                </div>
-                                <div class="rating">
-                                    <svg class="circle" width="100" height="100">
-                                        <circle class="bg" cx="50" cy="50" r="45"></circle>
-                                        <circle class="progress" cx="50" cy="50" r="45"></circle>
-                                    </svg>
-                                    <span class="number">85</span>
-                                </div>
-                                <div class="platforms">
-                                    <div class="platform xbox" title="Xbox">
-                                        <i class="bi bi-xbox"></i>
-                                    </div>
-                                    <div class="platform playstation" title="PlayStation">
-                                        <i class="bi bi-playstation"></i>
-                                    </div>
-                                    <div class="platform switch" title="Nintendo Switch">
-                                        <i class="bi bi-nintendo-switch"></i>
-                                    </div>
-                                    <div class="platform pc" title="PC">
-                                        <i class="bi bi-pc-display"></i>
-                                    </div>
-                                </div>
-                                <a href="entrada-juego.php" class="button">Ver recomendación</a>
-                            </div>
-                        </div>
-                        <div class="game swiper-slide">
-                            <picture>
-                                <source srcset="dist/imgs/p5r.jpeg" type="image/jpeg">
-                                <img src="dist/imgs/p5r.jpeg" alt="game image" loading="lazy">
-                            </picture>
-                            <div class="game-content">
-                                <h3>Persona 5 Royal</h3>
-                                <div class="tags">
-                                    <span class="tag">JRPG</span>
-                                    <span class="tag">Turn-Based</span>
-                                    <span class="tag">Anime</span>
-                                </div>
-                                <div class="rating">
-                                    <svg class="circle" width="100" height="100">
-                                        <circle class="bg" cx="50" cy="50" r="45"></circle>
-                                        <circle class="progress" cx="50" cy="50" r="45"></circle>
-                                    </svg>
-                                    <span class="number">85</span>
-                                </div>
-                                <div class="platforms">
-                                    <div class="platform xbox" title="Xbox">
-                                        <i class="bi bi-xbox"></i>
-                                    </div>
-                                    <div class="platform playstation" title="PlayStation">
-                                        <i class="bi bi-playstation"></i>
-                                    </div>
-                                    <div class="platform switch" title="Nintendo Switch">
-                                        <i class="bi bi-nintendo-switch"></i>
-                                    </div>
-                                    <div class="platform pc" title="PC">
-                                        <i class="bi bi-pc-display"></i>
-                                    </div>
-                                </div>
-                                <a href="#" class="button">Ver recomendación</a>
-                            </div>
-                        </div>
-                        <div class="game swiper-slide">
-                            <picture>
-                                <source srcset="dist/imgs/p5r.jpeg" type="image/jpeg">
-                                <img src="dist/imgs/p5r.jpeg" alt="game image" loading="lazy">
-                            </picture>
-                            <div class="game-content">
-                                <h3>Persona 5 Royal</h3>
-                                <div class="tags">
-                                    <span class="tag">JRPG</span>
-                                    <span class="tag">Turn-Based</span>
-                                    <span class="tag">Anime</span>
-                                </div>
-                                <div class="rating">
-                                    <svg class="circle" width="100" height="100">
-                                        <circle class="bg" cx="50" cy="50" r="45"></circle>
-                                        <circle class="progress" cx="50" cy="50" r="45"></circle>
-                                    </svg>
-                                    <span class="number">85</span>
-                                </div>
-                                <div class="platforms">
-                                    <div class="platform xbox" title="Xbox">
-                                        <i class="bi bi-xbox"></i>
-                                    </div>
-                                    <div class="platform playstation" title="PlayStation">
-                                        <i class="bi bi-playstation"></i>
-                                    </div>
-                                    <div class="platform switch" title="Nintendo Switch">
-                                        <i class="bi bi-nintendo-switch"></i>
-                                    </div>
-                                    <div class="platform pc" title="PC">
-                                        <i class="bi bi-pc-display"></i>
-                                    </div>
-                                </div>
-                                <a href="#" class="button">Ver recomendación</a>
-                            </div>
-                        </div>
+
+                        <?php 
+                            $lastgames = true;
+                            include 'includes/templates/card.php';
+                        ?>
+
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
