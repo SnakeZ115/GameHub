@@ -20,7 +20,7 @@
         <div class="hero-content">
             <h1>GameHub</h1>
             <p>De Gamers para Gamers. Descubre tu próximo juego favorito</p>
-            <a href="#" class="button">Explorar Catálogo</a>
+            <a href="catalogo.php" class="button">Explorar Catálogo</a>
         </div>
     </section>
 
@@ -32,6 +32,8 @@
                     <div class="last-games-content swiper-wrapper">
 
                         <?php 
+                            require 'includes/config/database.php';
+                            $db = conectarDB();
                             $lastgames = true;
                             include 'includes/templates/card.php';
                         ?>

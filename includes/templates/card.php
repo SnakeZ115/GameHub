@@ -1,6 +1,4 @@
 <?php 
-    require __DIR__ . '/../config/database.php';
-    $db = conectarDB();
 
     if($lastgames) {
         $query = "SELECT * FROM recomendaciones ORDER BY fecha_publicacion DESC LIMIT 5";
@@ -14,7 +12,7 @@
 ?>
 
 <?php while($recomendacion = mysqli_fetch_assoc($resultado)) : ?>
-<div class="game <?php if($lastgames) echo 'swiper-slide'?>">
+<div class="game <?php if($lastgames) echo 'swiper-slide'?>" data-rating="<?php echo $recomendacion['rating']; ?>">
 
     <img src="/imagenes/<?php echo $recomendacion['imagen']; ?>" alt="game image" loading="lazy">
 

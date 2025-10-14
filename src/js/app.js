@@ -8,9 +8,17 @@ navbarToggle.addEventListener('click', () => {
     body.classList.toggle('overflow-hidden');
 });
 
-function setRating(percent) {
-    const circle = document.querySelector(".progress");
-    const number = document.querySelector(".number");
+const cards = document.querySelectorAll(".game");
+cards.forEach(card => {
+    const rating = card.dataset.rating;
+    if(rating) {
+        setRating(rating, card);
+    } 
+});
+
+function setRating(percent, card) {
+    const circle = card.querySelector(".progress");
+    const number = card.querySelector(".number");
     const radius = 45;
     const circumference = 2 * Math.PI * radius;
 
