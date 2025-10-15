@@ -12,12 +12,12 @@
 
     if($generos) {
         $lista_generos = implode(',', array_map('intval', $generos));
-        $query .= " AND generos_idgenero IN($lista_generos);";
+        $query .= " AND generos_idgenero IN($lista_generos)";
     }
 
     if($plataformas) {
         $lista_plataformas = implode(',', array_map('intval', $plataformas));
-        $query .= " AND plataformas_idplataforma IN($lista_plataformas);";
+        $query .= " AND plataformas_idplataforma IN($lista_plataformas)";
     }
 
     if($busqueda) {

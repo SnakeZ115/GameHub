@@ -65,7 +65,7 @@
                 <?php endif ?>
             <?php endwhile; ?>
         </div>
-        <a href="entrada-juego.php" class="button">Ver recomendación</a>
+        <a href="entrada-juego.php?id=<?php echo $recomendacion['idrecomendacion'] ?>" class="button">Ver recomendación</a>
     </div>
 </div>
 <?php endwhile; ?>

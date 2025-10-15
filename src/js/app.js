@@ -10,12 +10,18 @@ navbarToggle.addEventListener('click', () => {
 
 function getCards() {
     const cards = document.querySelectorAll(".game");
-    cards.forEach(card => {
-        const rating = card.dataset.rating;
-        if (rating) {
-            setRating(rating, card);
-        }
-    });
+    if (cards.length != 0) {
+        cards.forEach(card => {
+            const rating = card.dataset.rating;
+            if (rating) {
+                setRating(rating, card);
+            }
+        });        
+    } else {
+        const game_content = document.querySelector(".game-content");
+        setRating(game_content.dataset.rating, game_content);
+    }
+
 }
 
 getCards();
