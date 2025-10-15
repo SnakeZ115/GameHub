@@ -1,18 +1,22 @@
 <?php 
-
-    if($lastgames) {
-        $query = "SELECT * FROM recomendaciones ORDER BY fecha_publicacion DESC LIMIT 5";
-        $resultado = mysqli_query($db, $query);
-        
-    }
+    if(isset($lista_recomendaciones)) {
+        $resultado = $lista_recomendaciones;
+    } 
     else {
-        $query =  "SELECT * FROM recomendaciones";
-        $resultado = mysqli_query($db, $query);
+        if($lastgames) {
+            $query = "SELECT * FROM recomendaciones ORDER BY fecha_publicacion DESC LIMIT 5";
+            
+        }
+        else {
+            $query =  "SELECT * FROM recomendaciones";
+        }
+        $resultado = mysqli_query($db, $query);        
     }
+
 ?>
 
 <?php while($recomendacion = mysqli_fetch_assoc($resultado)) : ?>
-<div class="game <?php if($lastgames) echo 'swiper-slide'?>" data-rating="<?php echo $recomendacion['rating']; ?>">
+<div class="game <?php if(isset($lastgames) && $lastgames) echo 'swiper-slide'?>" data-rating="<?php echo $recomendacion['rating']; ?>">
 
     <img src="/imagenes/<?php echo $recomendacion['imagen']; ?>" alt="game image" loading="lazy">
 

@@ -25,11 +25,6 @@
             <?php 
                 include 'includes/templates/filters.php';
             ?>
-            <div class="search-container">
-                <i class="bi bi-search icon"></i>
-                <input type="text" name="search" id="search" class="search" placeholder="Buscar juegos..." aria-label="Buscar juegos">                
-            </div>
-
         </aside>
 
         <h1>Cátalogo de Juegos</h1>

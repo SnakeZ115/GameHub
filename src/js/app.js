@@ -8,13 +8,18 @@ navbarToggle.addEventListener('click', () => {
     body.classList.toggle('overflow-hidden');
 });
 
-const cards = document.querySelectorAll(".game");
-cards.forEach(card => {
-    const rating = card.dataset.rating;
-    if(rating) {
-        setRating(rating, card);
-    } 
-});
+function getCards() {
+    const cards = document.querySelectorAll(".game");
+    cards.forEach(card => {
+        const rating = card.dataset.rating;
+        if (rating) {
+            setRating(rating, card);
+        }
+    });
+}
+
+getCards();
+
 
 function setRating(percent, card) {
     const circle = card.querySelector(".progress");
@@ -29,3 +34,33 @@ function setRating(percent, card) {
 
     number.textContent = percent;
 }
+
+/** Filters */
+const checkboxes = document.querySelectorAll('.checkbox');
+const gameList = document.querySelector('.games-list');
+const search = document.querySelector('.search');
+
+async function filtros() {
+
+    // Seleccionamos los generos y las plataformas seleccionadas y las guardamos en un array
+    const generosSeleccionados = [...document.querySelectorAll('input[name=genre]:checked')].map(checkbox => checkbox.value);
+    const plataformasSeleccionadas = [...document.querySelectorAll('input[name=platform]:checked')].map(checkbox => checkbox.value);
+    const busqueda = search.value;
+
+    // Creamos un formdata para enviar los valores al backend y renderizar los resultados
+    const formData = new FormData();
+    formData.append('generos', JSON.stringify(generosSeleccionados));
+    formData.append('plataformas', JSON.stringify(plataformasSeleccionadas));
+    formData.append('busqueda', busqueda)
+
+    // Hacemos una peticion FETCH para los filtros
+    let resultado = await fetch('includes/filtrar.php', {method: 'POST', body: formData});
+    let cards = await resultado.text();
+    
+    gameList.innerHTML = cards;
+    getCards();
+
+}
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('change', filtros));
+search.addEventListener('input', filtros);
