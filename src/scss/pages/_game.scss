@@ -2,10 +2,16 @@
 @use 'base/variables' as v;
 
 .game-details {
-    .tags {
-        margin-top: 2rem;;
+    .tags,
+    .platforms {
+        margin-top: 2rem;
     }
+
     .game-text {
         text-align: justify;
     }
+    .image-container {
+        position: relative;
+    }
 }
+

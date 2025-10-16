@@ -1,0 +1,8 @@
+@use 'base/variables' as v;
+
+.create-game {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

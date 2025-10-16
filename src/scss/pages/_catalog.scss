@@ -15,9 +15,15 @@ fieldset {
   border-radius: 6px;
   font-family: v.$text_font;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-flow: row;
   gap: 0.5rem;
+  @include m.tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include m.desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 legend {

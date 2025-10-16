@@ -5,6 +5,19 @@
     width: 30rem;
     margin: 0 auto;
     background-color: v.$primary_color;
+
+    .image-container {
+        position: relative;
+
+        img {
+            height: 15rem;
+
+            @include m.tablet {
+                height: 20rem;
+            }
+        }
+    }
+
     @include m.tablet {
         width: 35rem;
     }
@@ -14,42 +27,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-bottom: 2rem;
+    justify-content: space-evenly;
+    height: 30rem;
+
     h3 {
         color: v.$white;
         margin: 2rem 0;
+        text-align: center;
     }
-    .tags {
-        display: flex;
-        gap: 0.5rem;
-        .tag {
-            background-color: transparent;
-            border: 1px solid v.$white;
-            color: v.$white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 0.5rem;
-            font-size: 1.2rem;
-            font-family: v.$text_font;
-            text-transform: uppercase;
-        }
-    }
-    .platforms {
-        display: flex;
-        gap: 2rem;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .tag {
+        background-color: transparent;
+        border: 1px solid v.$white;
         color: v.$white;
-        margin-bottom: 2rem;
-        .platform {
-            font-size: 2rem;
-            cursor: pointer;
-        }
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-family: v.$text_font;
+        text-transform: uppercase;
+    }
+}
+
+.platforms {
+    display: flex;
+    gap: 2rem;
+    color: v.$white;
+    justify-content: center;
+    align-items: center;
+    .platform {
+        font-size: 2rem;
+        cursor: pointer;
     }
 }
 
 
 .rating {
-    margin: 2rem 0;
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 100px;
     height: 100px;
     display: flex;
@@ -66,21 +90,20 @@
     .circle {
         .bg {
             fill: none;
-            stroke: v.$background-color;
+            stroke: transparent;
             stroke-width: 10;
         }
 
         .progress {
-            fill: none;
-            stroke: v.$green; 
-            stroke-width: 10;
+            fill: rgba($color: v.$background-color, $alpha: 0.7);
+            stroke: v.$green;
+            stroke-width: 5;
             stroke-linecap: round;
-            stroke-dasharray: 283; 
-            stroke-dashoffset: 283; 
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
             transform: rotate(-90deg);
             transform-origin: 50% 50%;
             transition: stroke-dashoffset 0.5s ease;
         }
     }
 }
-
