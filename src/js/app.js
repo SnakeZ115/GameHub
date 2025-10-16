@@ -18,8 +18,9 @@ function getCards() {
             }
         });        
     } else {
-        const game_content = document.querySelector(".game-content");
-        setRating(game_content.dataset.rating, game_content);
+        const game_content = document.querySelector(".game-details-content");
+        const rating = game_content.dataset.rating;
+        setRating(rating, game_content);
     }
 
 }
@@ -30,7 +31,7 @@ getCards();
 function setRating(percent, card) {
     const circle = card.querySelector(".progress");
     const number = card.querySelector(".number");
-    const radius = 45;
+    const radius = 25;
     const circumference = 2 * Math.PI * radius;
 
     const offset = circumference - (percent / 100) * circumference;

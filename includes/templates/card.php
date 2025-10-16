@@ -18,7 +18,18 @@
 <?php while($recomendacion = mysqli_fetch_assoc($resultado)) : ?>
 <div class="game <?php if(isset($lastgames) && $lastgames) echo 'swiper-slide'?>" data-rating="<?php echo $recomendacion['rating']; ?>">
 
-    <img src="/imagenes/<?php echo $recomendacion['imagen']; ?>" alt="game image" loading="lazy">
+
+    <div class="image-container">
+        <img src="/imagenes/<?php echo $recomendacion['imagen']; ?>" alt="game image" loading="lazy">  
+        <div class="rating">
+            <svg class="circle" width="60" height="60">
+                <circle class="bg" cx="30" cy="30" r="25"></circle>
+                <circle class="progress" cx="30" cy="30" r="25"></circle>
+            </svg>
+            <span class="number"> <?php echo $recomendacion['rating']; ?> </span>
+        </div>              
+    </div>
+    
 
     <div class="game-content">
         <h3> <?php echo $recomendacion['titulo_juego']; ?> </h3>
@@ -31,13 +42,6 @@
             <?php while($genero = mysqli_fetch_assoc($resultado_generos)) : ?>
                 <span class="tag"> <?php echo $genero['genero']; ?></span>
             <?php endwhile; ?>
-        </div>
-        <div class="rating">
-            <svg class="circle" width="100" height="100">
-                <circle class="bg" cx="50" cy="50" r="45"></circle>
-                <circle class="progress" cx="50" cy="50" r="45"></circle>
-            </svg>
-            <span class="number"> <?php echo $recomendacion['rating']; ?> </span>
         </div>
             <?php 
                 $id = $recomendacion['idrecomendacion'];
