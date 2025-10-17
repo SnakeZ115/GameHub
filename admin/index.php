@@ -1,3 +1,13 @@
+<?php 
+    require '../includes/funciones.php';
+    $auth = estaAutenticado();
+
+    if(!$auth) {
+        header('Location: /');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +19,6 @@
 <body>
     <?php
         // Incluir template
-        require '../includes/funciones.php';
         incluirTemplate('header');
 
         // Mensaje condicional
