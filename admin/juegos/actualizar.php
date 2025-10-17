@@ -1,3 +1,13 @@
+<?php 
+    require '../../includes/funciones.php';
+    $auth = estaAutenticado();
+
+    if(!$auth) {
+        header('Location: /');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +28,7 @@
     if(!$id) {
         header('Location: /admin'); // Redireccionar en caso de que no haya id
     }
-
-    require '../../includes/funciones.php';
+    
     incluirTemplate('header');
 
     // Base de datos

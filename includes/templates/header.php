@@ -1,3 +1,10 @@
+<?php 
+
+    if(!isset($_SESSION)) {
+        session_start();        
+    }
+    $auth = $_SESSION['login'] ?? false; 
+?>
 <header class="header">
         <nav class="navbar">
             <div class="navbar-container">
@@ -25,6 +32,11 @@
                     <li><a href="catalogo.php">Catálogo</a></li>
                     <li><a href="blog.php">Blog</a></li>
                     <li><a href="contacto.php">Contacto</a></li>
+                    <?php if($auth) : ?>
+                        <li><a href="cerrar-sesion.php">Cerrar sesión</a></li>
+                    <?php else : ?>
+                        <li><a href="login.php">Iniciar sesión</a></li>
+                    <?php endif ?>
                 </ul>
             </div>
         </nav>

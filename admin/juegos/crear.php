@@ -1,3 +1,13 @@
+<?php 
+    require '../../includes/funciones.php';
+    $auth = estaAutenticado();
+
+    if(!$auth) {
+        header('Location: /');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +20,7 @@
 
 <body class="create-game">
     <?php
-    require '../../includes/funciones.php';
+
     incluirTemplate('header');
 
     // Base de datos
