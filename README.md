@@ -14,7 +14,6 @@ El objetivo de la página es que yo pueda compartir mis juegos favoritos, descub
 - ⚙️ Backend desarrollado con **PHP** y **MySQL**.  
 - 📰 Sección de blogs *(en desarrollo)*.
 - 📬 Formulario de contacto para recibir mensajes de los usuarios *(en desarrollo)*.
-- 📰 Sección de blogs *(en desarrollo)*.
 
 ## 🧱 Tecnologías utilizadas  
 
